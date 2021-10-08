@@ -53,17 +53,34 @@ bool est_parfait(int i)
     return false;
 }
 
+typedef short TypeEntier;
+TypeEntier factorielle(int N)
+{
+    int produit = 1;
+    for (int i = N; i > 0; i--)
+    {
+        produit *= i;
+    }
+    return produit;
+}
+
+void affichageFactorielle(void)
+{
+    int N = 0;
+    printf("Entrer un nombre entier : ");
+    scanf("%d", &N);
+    printf("%d! = %11d\n", N, factorielle(N));
+}
+
+void calculFactorielles(void)
+{
+    for (int i = 0; i <= 15; i++)
+    {
+        printf("%d! = %11d\n", i, factorielle(i));
+    }
+}
+
 int main(void)
 {
-    int N = 23;
-
-    for (int i = 0; i <= N; i++)
-    {
-        if (est_parfait(i))
-        {
-            printf(i);
-        }
-    }
-
-    return 0;
+    calculFactorielles();
 }
