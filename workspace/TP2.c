@@ -11,17 +11,16 @@ void echangeContenu(int *a, int *b)
     *b = temp;
 }
 
-/*
-int main(void)
-{
-    int a = 10;
-    int b = 28;
-    printf("a = %d b=%d\n", a, b);
-    echangeContenu(&a, &b);
-    printf("a = %d b=%d\n", a, b);
+// int main(void)
+// {
+//     int a = 10;
+//     int b = 28;
+//     printf("a = %d b=%d\n", a, b);
+//     echangeContenu(&a, &b);
+//     printf("a = %d b=%d\n", a, b);
 
-    return EXIT_SUCCESS;
-}*/
+//     return EXIT_SUCCESS;
+// }
 
 //Question 2
 bool estConvexe(bool tab[], int length)
@@ -43,21 +42,20 @@ bool estConvexe(bool tab[], int length)
     return true;
 }
 
-/*
-int main(void)
-{
+// int main(void)
+// {
 
-    bool tab[5] = {true, true, false, false, true};
-    if (estConvexe(tab, 5))
-    {
-        printf("convexe\n");
-    }
-    else
-    {
-        printf("non convexe\n");
-    }
-    return EXIT_SUCCESS;
-}*/
+//     bool tab[5] = {true, true, false, false, true};
+//     if (estConvexe(tab, 5))
+//     {
+//         printf("convexe\n");
+//     }
+//     else
+//     {
+//         printf("non convexe\n");
+//     }
+//     return EXIT_SUCCESS;
+// }
 
 //Question 3
 void mult_matrice(__int64_t matriceRes[5][5], __int64_t matrice1[5][5], __int64_t matrice2[5][5])
@@ -90,21 +88,21 @@ void affiche_matrice(__int64_t matrice[5][5])
     printf("\n");
 }
 
-/*int main(void)
-{
-    //matrices en ligne * colonne
-    int64_t matrice1[5][5] = {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}};
-    int64_t matrice2[5][5] = {{6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}};
-    int64_t matriceResultat[5][5];
-    mult_matrice(matriceResultat, matrice1, matrice2);
-    affiche_matrice(matriceResultat);
-    return EXIT_SUCCESS;
-}*/
+// int main(void)
+// {
+//     //matrices en ligne * colonne
+//     int64_t matrice1[5][5] = {{1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}, {1, 2, 3, 4, 5}};
+//     int64_t matrice2[5][5] = {{6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}, {6, 7, 8, 9, 10}};
+//     int64_t matriceResultat[5][5];
+//     mult_matrice(matriceResultat, matrice1, matrice2);
+//     affiche_matrice(matriceResultat);
+//     return EXIT_SUCCESS;
+// }
 
 //Question 4
 enum Mois
 {
-    janvier = 1,
+    janvier,
     fevrier,
     mars,
     avril,
@@ -127,9 +125,15 @@ struct Date
 
 void initialiseDate(struct Date *date)
 {
-    date->jour = 1;
-    date->mois = janvier;
-    date->annee = 2021;
+    printf("Rentrez une date : \n");
+    int jour;
+    enum Mois mois;
+    int annee;
+    scanf("%d %d %d", &jour, &mois, &annee);
+
+    date->jour = jour;
+    date->mois = mois;
+    date->annee = annee;
 }
 
 void afficheDate(struct Date *date)
@@ -137,68 +141,26 @@ void afficheDate(struct Date *date)
     printf("%02d/%02d/%04d\n", date->jour, date->mois, date->annee);
 }
 
-/*struct Date creerDateParCopie()
+struct Date creerDateParCopie()
 {
     struct Date d;
-    initialiseDate(&d);
     printf("Rentrez une date : \n");
     int jour;
     enum Mois mois;
     int annee;
     scanf("%d %d %d", &jour, &mois, &annee);
     d.jour = jour;
-    switch (mois)
-    {
-    case janvier:
-        d.mois = janvier;
-        break;
-    case fevrier:
-        d.mois = fevrier;
-        break;
-    case mars:
-        d.mois = mars;
-        break;
-    case avril:
-        d.mois = avril;
-        break;
-    case mai:
-        d.mois = mai;
-        break;
-    case juin:
-        d.mois = juin;
-        break;
-    case juillet:
-        d.mois = juillet;
-        break;
-    case aout:
-        d.mois = aout;
-        break;
-    case septembre:
-        d.mois = septembre;
-        break;
-    case octobre:
-        d.mois = octobre;
-        break;
-    case novembre:
-        d.mois = novembre;
-        break;
-    case decembre:
-        d.mois = decembre;
-        break;
-    default:
-        printf("Le mois n'est pas correct\n");
-        d.mois = janvier;
-        break;
-    }
+    d.mois = mois;
     d.annee = annee;
+
     return d;
-}*/
+}
 
 int main(void)
 {
     struct Date d;
-    initialiseDate(&d);
-    //d = creerDateParCopie();
+    //initialiseDate(&d);
+    d = creerDateParCopie();
     afficheDate(&d);
 
     return EXIT_SUCCESS;
