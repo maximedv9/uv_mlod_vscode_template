@@ -156,12 +156,26 @@ struct Date creerDateParCopie()
     return d;
 }
 
+struct Date newDate()
+{
+    struct Date *pDate = (struct Date *)malloc(sizeof(struct Date));
+    if (pDate)
+        initialiseDate(pDate);
+    return *pDate;
+}
+
 int main(void)
 {
-    struct Date d;
-    //initialiseDate(&d);
-    d = creerDateParCopie();
-    afficheDate(&d);
+    // struct Date d;
+    // initialiseDate(&d);
+    // d = creerDateParCopie();
+    // afficheDate(&d);
+
+    struct Date *date;
+    struct Date newDate();
+    afficheDate(date);
+
+    free(date);
 
     return EXIT_SUCCESS;
 }
