@@ -59,13 +59,14 @@ struct winner
 };
 typedef struct winner Winner;
 
-Winner readWinners(int nbGagnants, Winner *tab)
+void readWinners(int nbGagnants, Winner **tab)
 {
+	*tab = (Winner *)calloc(nbGagnants, sizeof(Winner));
 	for (int i = 0; i < nbGagnants; i++)
 	{
-		tab[i].winnerYear = scanLineAsInt();
-		tab[i].winnerName = scanLine();
-		tab[i].winnerDescription = scanLine();
+		(*tab)[i].winnerYear = scanLineAsInt();
+		(*tab)[i].winnerName = scanLine();
+		(*tab)[i].winnerDescription = scanLine();
 	}
 }
 
@@ -73,10 +74,9 @@ void printWinners(int nbGagnant, Winner *tab)
 {
 	for (int i = 0; i < nbGagnant; i++)
 	{
-		Winner winner = tab[i];
-		printf("%i \n", winner.winnerYear);
-		printf("%s \n", winner.winnerName);
-		printf("%s \n", winner.winnerDescription);
+		printf("%i \n", tab[i].winnerYear);
+		printf("%s \n", tab[i].winnerName);
+		printf("%s \n", tab[i].winnerDescription);
 	}
 }
 
@@ -88,9 +88,10 @@ int main(void)
 {
 	int nbGagnants = scanLineAsInt();
 	printf("nbGagnants = %i\n", nbGagnants);
-	Winner Winnerstab[50];
-	readWinners(nbGagnants, Winnerstab);
+	Winner *Winnerstab;
+	readWinners(nbGagnants, &Winnerstab);
 	printWinners(nbGagnants, Winnerstab);
+	free(Winnerstab);
 
 	return EXIT_SUCCESS;
 }

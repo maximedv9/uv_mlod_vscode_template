@@ -1,10 +1,8 @@
-50 
+nbGagnantss = 50
 1968 
 Richard Hamming 
-255 
 Méthodes numériques, systèmes de codage automatique, détection et correction d’erreurs 
 1969 
-255 
 Marvin Minsky 
 Intelligence artificielle 
 1970 
@@ -148,3 +146,6 @@ Contributions fondamentales théoriques appliquées aux systèmes distribués et
 2014 
 Michael Stonebraker 
 Contributions aux systèmes de gestions de bases de données (SGBD) et inventeur de PostgreSQL 
+2015 
+Whitfield Diffie et Martin Hellman 
+Contributions à la cryptographie contemporaine (créateurs de la cryptographie asymétrique) 
