@@ -59,21 +59,19 @@ struct winner
 };
 typedef struct winner Winner;
 
-Winner readWinners(Winner *tab)
+Winner readWinners(int nbGagnants, Winner *tab)
 {
-	scanLineAsInt();
-	for (int i = 0; i < 49; i++)
+	for (int i = 0; i < nbGagnants; i++)
 	{
-		Winner winner = tab[i];
-		winner.winnerYear = scanLineAsInt();
-		winner.winnerName = scanLine();
-		winner.winnerDescription = scanLine();
+		tab[i].winnerYear = scanLineAsInt();
+		tab[i].winnerName = scanLine();
+		tab[i].winnerDescription = scanLine();
 	}
 }
 
-void printWinners(Winner *tab)
+void printWinners(int nbGagnant, Winner *tab)
 {
-	for (int i = 1; i <= 50; i++)
+	for (int i = 0; i < nbGagnant; i++)
 	{
 		Winner winner = tab[i];
 		printf("%i \n", winner.winnerYear);
@@ -84,15 +82,6 @@ void printWinners(Winner *tab)
 
 void infosAnnee(int annee)
 {
-	int ligne;
-	ligne = scanLineAsInt();
-	while (ligne != annee)
-	{
-		ligne = scanLineAsInt();
-	}
-	printf("L'annee %d, le(s) gangant(s) ont été : ", annee);
-	printf("%s\n", scanLine());
-	printf("Nature des travaux : %s\n", scanLine());
 }
 
 int main(void)
@@ -100,8 +89,8 @@ int main(void)
 	int nbGagnants = scanLineAsInt();
 	printf("nbGagnants = %i\n", nbGagnants);
 	Winner Winnerstab[50];
-	readWinners(Winnerstab);
-	printWinners(Winnerstab);
+	readWinners(nbGagnants, Winnerstab);
+	printWinners(nbGagnants, Winnerstab);
 
 	return EXIT_SUCCESS;
 }
