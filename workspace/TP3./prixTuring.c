@@ -59,31 +59,36 @@ struct winner
 };
 typedef struct winner Winner;
 
-Winner readWinners()
+Winner readWinners(Winner *tab)
 {
-	Winner Winner;
-	Winner.winnerYear = scanLineAsInt();
-	Winner.winnerName = scanLine();
-	Winner.winnerDescription = scanLine();
-
-	return Winner;
+	scanLineAsInt();
+	for (int i = 0; i < 49; i++)
+	{
+		Winner winner = tab[i];
+		winner.winnerYear = scanLineAsInt();
+		winner.winnerName = scanLine();
+		winner.winnerDescription = scanLine();
+	}
 }
 
-void printWinners(Winner Winner)
+void printWinners(Winner *tab)
 {
-	printf("%i \n", Winner.winnerYear);
-	printf("%s \n", Winner.winnerName);
-	printf("%s \n", Winner.winnerDescription);
+	for (int i = 1; i <= 50; i++)
+	{
+		Winner winner = tab[i];
+		printf("%i \n", winner.winnerYear);
+		printf("%s \n", winner.winnerName);
+		printf("%s \n", winner.winnerDescription);
+	}
 }
 
 int main(void)
 {
+	int nbGagnants = scanLineAsInt();
+	printf("nbGagnants = %i\n", nbGagnants);
 	Winner Winnerstab[50];
-	for (int i = 0; i < 50; i++)
-	{
-		Winner Winner = readWinners();
-		Winnerstab[i] = Winner;
-		printWinners(Winner);
-	}
+	readWinners(Winnerstab);
+	printWinners(Winnerstab);
+
 	return EXIT_SUCCESS;
 }
