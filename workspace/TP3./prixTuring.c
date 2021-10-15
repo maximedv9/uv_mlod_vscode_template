@@ -82,6 +82,19 @@ void printWinners(Winner *tab)
 	}
 }
 
+void infosAnnee(int annee)
+{
+	int ligne;
+	ligne = scanLineAsInt();
+	while (ligne != annee)
+	{
+		ligne = scanLineAsInt();
+	}
+	printf("L'annee %d, le(s) gangant(s) ont été : ", annee);
+	printf("%s\n", scanLine());
+	printf("Nature des travaux : %s\n", scanLine());
+}
+
 int main(void)
 {
 	int nbGagnants = scanLineAsInt();
