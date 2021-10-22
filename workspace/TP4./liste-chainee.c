@@ -40,6 +40,10 @@ void afficheElement(Element e)
 // version itérative
 void afficheListe_i(Liste l)
 {
+	if (estVide(l))
+	{
+		printf("La liste est vide");
+	}
 	while (!estVide(l))
 	{
 		afficheElement(l->val);
@@ -150,67 +154,16 @@ Liste cherche_r(Element v, Liste l)
 // version itérative
 Liste retirePremier_i(Element v, Liste l)
 {
-	Liste premier;
-	if ((premier = cherche_i(v, l)) == NULL)
-		return l;
-
-	if (l == premier)
-	{
-		Liste t = l->suiv;
-		detruireElement(t->val);
-		free(l);
-		return t;
-	}
-
-	Liste t = l;
-	while (t->suiv != premier)
-		t = t->suiv;
-
-	Liste tmp = t->suiv->suiv;
-	detruireElement(t->suiv->val);
-	free(t->suiv);
-	t->suiv = tmp;
-
-	return l;
+	return TODO;
 }
 
 // version recursive
 Liste retirePremier_r(Element v, Liste l)
 {
-	if (estVide(l))
-		return NULL;
-
-	if (equalsElement(v, l->val))
-	{
-		Liste tmp = l->suiv;
-		detruireElement(l->val);
-		free(l);
-		return tmp;
-	}
-
-	if (!estVide(l->suiv))
-	{
-		if (equalsElement(v, l->suiv->val))
-		{
-			Liste tmp = l->suiv->suiv;
-			detruireElement(l->suiv->val);
-			free(l->suiv);
-			l->suiv = tmp;
-		}
-		else
-		{
-			retirePremier_r(v, l->suiv);
-		}
-	}
-
-	return l;
+	return TODO;
 }
 
 void afficheEnvers_r(Liste l)
 {
-	if (!estVide(l))
-	{
-		afficheEnvers_r(l->suiv);
-		afficheElement(l->val);
-	}
+	return TODO;
 }
