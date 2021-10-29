@@ -4,45 +4,55 @@
 
 #include "arbre-bin-recherche.h"
 
-int main(void){
+int main(void)
+{
 	ArbreBinaire a; //,p;
 
 	initialiser(&a);
 	// a = NULL;
-	printf("estVide(a)= %s\n",estVide(a)?"TRUE":"FALSE");
-	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	printf("estVide(a)= %s\n", estVide(a) ? "TRUE" : "FALSE");
+	printf("nombreDeNoeud(a)= %i\n", nombreDeNoeud(a));
 
-	a = insere_r(a,5);
-	afficheGRD_r(a);printf("\n");
-	a = insere_r(a,3);
-	afficheGRD_r(a);printf("\n");
-	a = insere_r(a,2);
-	afficheGRD_r(a);printf("\n");
-	a = insere_r(a,3);
-	afficheGRD_r(a);printf("\n");
-	a = insere_r(a,1);
-	afficheGRD_r(a);printf("\n");
+	a = insere_r(a, 5);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_r(a, 3);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_r(a, 2);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_r(a, 3);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_r(a, 1);
+	afficheGRD_r(a);
+	printf("\n");
 
-	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	printf("nombreDeNoeud(a)= %i\n", nombreDeNoeud(a));
 
-	a = insere_r(a,7);
-	afficheGRD_r(a);printf("\n");
-	a = insere_i(a,8);
-	afficheGRD_r(a);printf("\n");
-	a = insere_i(a,6);
-	afficheGRD_r(a);printf("\n");
-	a = insere_r(a,3);
-	afficheGRD_r(a);printf("\n");
-	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	a = insere_r(a, 7);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_i(a, 8);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_i(a, 6);
+	afficheGRD_r(a);
+	printf("\n");
+	a = insere_r(a, 3);
+	afficheGRD_r(a);
+	printf("\n");
+	printf("nombreDeNoeud(a)= %i\n", nombreDeNoeud(a));
 
-// 	a = supprimer_r(a,6);
-// 	afficheGRD_r(a);printf("\n");
-// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-//
-// 	a = supprimer_r(a,5);
-// 	afficheGRD_r(a);printf("\n");
-// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
-//
+	// 	a = supprimer_r(a,6);
+	// 	afficheGRD_r(a);printf("\n");
+	// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	//
+	// 	a = supprimer_r(a,5);
+	// 	afficheGRD_r(a);printf("\n");
+	// 	printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
+	//
 	// printf("profondeur 5 = %i\n",profondeur(a,5));
 	// printf("profondeur 2 = %i\n",profondeur(a,2));
 	// printf("profondeur 3 = %i\n",profondeur(a,3));
