@@ -116,9 +116,18 @@ int profondeur(ArbreBinaire a, Element e)
 	}
 	if ((a->val) == e)
 	{
-		return 0;
+		return 1;
 	}
 	int profondeurGauche, profondeurDroite;
+	profondeurGauche = profondeur(a->filsGauche, e);
+	profondeurDroite = profondeur(a->filsDroit, e);
+
+	if (profondeurGauche != -1)
+		return profondeurGauche + 1;
+	if (profondeurDroite != -1)
+		return profondeurDroite + 1;
+
+	return -1;
 }
 
 // retourne la hauteur de l'arbre a
@@ -149,6 +158,42 @@ int hauteur(ArbreBinaire a)
 ArbreBinaire pere(ArbreBinaire a, Element elem)
 {
 
+	return NULL;
+	if (estVide(a))
+	{
+		return NULL;
+	}
+	if (a->val == elem)
+	{
+		return NULL;
+	}
+
+	if (elem < a->val)
+	{
+		if (!estVide(a->filsGauche))
+		{
+			if (a->filsGauche->val == elem)
+			{
+				return a;
+			}
+			else
+			{
+				return pere(a->filsGauche, elem);
+			}
+		}
+	}
+	else
+	{
+		if (!estVide(a->filsDroit))
+		{
+			if (a->filsDroit->val == elem)
+			{
+				return a;
+			}
+			else
+				return pere(a->filsDroit, elem);
+		}
+	}
 	return NULL;
 }
 
@@ -191,20 +236,54 @@ void afficheGDR_r(ArbreBinaire a)
 // Suppose que a est un arbre binaire de recherche sans doublons
 ArbreBinaire min(ArbreBinaire a)
 {
-	return NULL;
+	if (estVide(a))
+	{
+		printf("arbre vide \n");
+		return NULL;
+	}
+	if (estVide(a->filsGauche))
+	{
+		return a;
+	}
+	return min(a->filsGauche);
 }
 
 // retourne le noeud dont la valeur est maximum dans l'arbre
 // Suppose que a est un arbre binaire de recherche sans doublons
 ArbreBinaire max(ArbreBinaire a)
 {
-	return NULL;
+	if (estVide(a))
+	{
+		printf("arbre vide \n");
+		return NULL;
+	}
+	if (estVide(a->filsDroit))
+	{
+		return a;
+	}
+	return min(a->filsDroit);
 }
 
 // retourne l'arbre dont la valeur de la racine est elem et NULL si elem n'existe dans a
 // version récursive
 ArbreBinaire recherche_r(ArbreBinaire a, Element elem)
 {
+	if (estVide(a))
+	{
+		return NULL;
+	}
+	if (a->val == elem)
+	{
+		return a;
+	}
+	if (!estVide(a->filsGauche))
+	{
+		return recherche_r(a->filsGauche, elem);
+	}
+	if (!estVide(a->filsDroit))
+	{
+		return recherche_r(a->filsDroit, elem);
+	}
 
 	return NULL;
 }
@@ -212,10 +291,26 @@ ArbreBinaire recherche_r(ArbreBinaire a, Element elem)
 // suppime x de a
 ArbreBinaire supprimer_r(ArbreBinaire a, Element x)
 {
+	if (estVide(recherche_r(a, x)))
+	{
+		return a;
+	}
 
+	detruire_r(recherche_r(a, x));
 	return NULL;
+}
+
+void detruireElement(Element e)
+{
 }
 
 void detruire_r(ArbreBinaire a)
 {
+	if (!estVide(a))
+	{
+		detruire_r(a->filsDroit);
+		detruire_r(a->filsGauche);
+		detruireElement(a->val);
+		free(a);
+	}
 }
